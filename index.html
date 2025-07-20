@@ -569,6 +569,38 @@ padding-top: 30px;
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
   <script>
+
+
+
+
+
+  // Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'light';
+
+// Set initial theme
+document.documentElement.setAttribute('data-theme', savedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  // Change emoji based on theme
+  themeToggle.textContent = newTheme === 'light' ? '🌓' : '🌞';
+});
+  
+  
+
+
+
+
+
+
+
+    
     document.addEventListener('DOMContentLoaded', () => {
       // Initialize jsPDF
       const { jsPDF } = window.jspdf;
