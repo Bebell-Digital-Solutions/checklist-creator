@@ -567,24 +567,26 @@ padding-top: 30px;
 
 
 
-  // Theme toggle functionality
+// Theme toggle functionality
 const themeToggle = document.getElementById('themeToggle');
 const savedTheme = localStorage.getItem('theme') || 'light';
 
 // Set initial theme
-document.documentElement.setAttribute('data-theme', savedTheme);
+document.documentElement.setAttribute('data-theme', savedTheme === 'dark' ? 'dark' : '');
+
+// Set initial emoji based on theme
+themeToggle.textContent = savedTheme === 'dark' ? '🌞' : '🌓';
 
 themeToggle.addEventListener('click', () => {
   const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  const newTheme = currentTheme === 'dark' ? '' : 'dark';
   
   document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
+  localStorage.setItem('theme', newTheme ? 'dark' : 'light');
   
   // Change emoji based on theme
-  themeToggle.textContent = newTheme === 'light' ? '🌓' : '🌞';
+  themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌓';
 });
-  
   
 
 
